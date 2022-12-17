@@ -35,6 +35,10 @@ internal class RegexTryParse
         try
         {
             int total = int.Parse(amount);
+            if (total <= 0)
+            {
+                throw new Exception("phải lớn hơn 0");
+            }
         }
         catch (Exception) when (amount.Contains("$"))
         {
