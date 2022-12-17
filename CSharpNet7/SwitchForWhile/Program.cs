@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using System.Collections;
+using System.Text;
 
 Console.InputEncoding = Encoding.Unicode;
 Console.OutputEncoding = Encoding.Unicode;
@@ -14,19 +15,48 @@ string? dau = Console.ReadLine();
 
 switch (dau)
 {
-    case "+":
+    case "+" when number1 > 0 && number2 > 0:
         Console.WriteLine(number1 + number2);
         break;
-    case "-":
+    case "-" when number1 >= number2:
         Console.WriteLine(number1 - number2);
         break;
     case "*":
-        Console.WriteLine(number1 + number2);
+        Console.WriteLine(number1 * number2);
         break;
-    case "/":
-        Console.WriteLine(number1 + number2);
+    case "/" when number2 != 0:
+        Console.WriteLine(number1 / number2);
         break;
     default:
         Console.WriteLine("hi, i can't");
         break;
+}
+
+//switch expression
+Console.WriteLine(
+
+    dau switch
+    {
+        "+" when number1 > 0 && number2 > 0 => number1 + number2,
+        "-" when number1 >= number2         => number1 - number2,
+        "*"                                 => number1 * number2,
+        "/" when number2 != 0               => number1 / number2,
+        _ => "hi, i can't"
+    }
+
+);
+
+
+string[] arrs = {"khải", "tín","thắng", "huy", "nghị"};
+
+foreach (var t in arrs)
+{
+    Console.WriteLine(t);
+}
+
+IEnumerator e = arrs.GetEnumerator();
+while (e.MoveNext())
+{
+    string s = e.Current.ToString();
+    Console.WriteLine(s);
 }
